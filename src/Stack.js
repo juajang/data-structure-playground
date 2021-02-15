@@ -4,21 +4,21 @@ import StackList from "./components/StackList.js";
 export default function Stack() {
   this.stackedData = [];
 
-  const $stack = document.querySelector(".stack");
-  this.$stack = $stack;
+  this.$stack = document.querySelector("#stack");
+  this.$buttonWrapper = document.querySelector('#stack-button-wrapper');
 
   this.initiate = () => {
     new Button({
-      $target: $stack,
+      $target: this.$buttonWrapper,
       innerText: "PUSH",
       onClick: this.pushData
     });
     new Button({
-      $target: $stack,
+      $target: this.$buttonWrapper,
       innerText: "POP",
       onClick: this.popData
     });
-    this.stackList = new StackList({ $target: $stack });
+    this.stackList = new StackList({ $target: this.$stack });
   }
 
   this.pushData = () => {

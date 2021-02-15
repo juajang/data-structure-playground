@@ -1,3 +1,3 @@
 # Data Structure Playground
 
-Data visulization project built with Vanilla JS
+Data visualization project built with Vanilla JS
