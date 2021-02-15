@@ -38,7 +38,5 @@ export default function Stack() {
     stackedData = stackedData.slice(0, -1);
   };
 
-
-
   this.initiate();
 }
