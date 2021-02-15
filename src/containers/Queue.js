@@ -3,7 +3,7 @@ import { ANIMATION } from "../util.js";
 import QueueList from "../components/QueueList.js";
 
 export default function Queue() {
-  this.queuedData = [];
+  let queuedData = [];
 
   this.$stack = document.querySelector("#queue");
   this.$buttonWrapper = document.querySelector('#queue-button-wrapper');
@@ -23,13 +23,13 @@ export default function Queue() {
   }
 
   this.enqueueData = () => {
-    this.queuedData = this.queuedData.concat(
-      this.queuedData.length === 0
+    queuedData = queuedData.concat(
+      queuedData.length === 0
         ? 1
-        : this.queuedData[this.queuedData.length - 1] + 1
+        : queuedData[queuedData.length - 1] + 1
     );
     this.queueList.render({
-      data: this.queuedData,
+      data: queuedData,
       animation: ANIMATION["NEW_ELEMENT_ADDED"],
     })
   };

@@ -3,7 +3,7 @@ import StackList from "../components/StackList.js";
 import { ANIMATION } from "../util.js";
 
 export default function Stack() {
-  this.stackedData = [];
+  let stackedData = [];
 
   this.$stack = document.querySelector("#stack");
   this.$buttonWrapper = document.querySelector('#stack-button-wrapper');
@@ -23,19 +23,19 @@ export default function Stack() {
   }
 
   this.pushData = () => {
-    this.stackedData = this.stackedData.concat(this.stackedData.length + 1);
+    stackedData = stackedData.concat(stackedData.length + 1);
     this.stackList.render({
-      data: this.stackedData,
+      data: stackedData,
       animation: ANIMATION["NEW_ELEMENT_ADDED"],
     })
   };
 
   this.popData = () => {
     this.stackList.render({
-      data: this.stackedData,
+      data: stackedData,
       animation: ANIMATION["ELEMENT_REMOVED"],
     })
-    this.stackedData = this.stackedData.slice(0, -1);
+    stackedData = stackedData.slice(0, -1);
   };
 
 
