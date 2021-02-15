@@ -1,6 +1,6 @@
-import Button from './components/Button.js';
-import StackList from "./components/StackList.js";
-import { ANIMATION } from "./util.js";
+import Button from '../components/Button.js';
+import StackList from "../components/StackList.js";
+import { ANIMATION } from "../util.js";
 
 export default function Stack() {
   this.stackedData = [];
@@ -37,6 +37,8 @@ export default function Stack() {
     })
     this.stackedData = this.stackedData.slice(0, -1);
   };
+
+
 
   this.initiate();
 }
