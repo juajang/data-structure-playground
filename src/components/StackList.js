@@ -7,10 +7,23 @@ export default function StackList({ $target }) {
   this.$stackList.className = "list";
 
   // remove all old children, and draw new children
-  this.render = (data) => {
+  this.render = ({ data, animation }) => {
     this.$stackList.innerHTML = '';
     data.forEach((item) => {
-      new Element({ $target: this.$stackList, innerText: item });
+      if (item === data.length) {
+        new Element({
+          $target: this.$stackList,
+          innerText: item,
+          animation
+        });
+      } else {
+        new Element({
+          $target: this.$stackList,
+          innerText: item,
+          animation: '',
+        });
+      }
     })
   };
+
 };

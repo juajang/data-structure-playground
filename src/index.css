@@ -48,7 +48,7 @@ h2 {
     display: flex;
 }
 
-.stack-item {
+.list-item {
     background-color: #fcd5ce;
     color: #b5838d;
     width: 2rem;
@@ -56,4 +56,30 @@ h2 {
     margin-right: 0.5rem;
     display: grid;
     place-items: center;
+}
+
+@keyframes newElementAdded {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.added {
+    animation: 300ms ease-out 0s 1 newElementAdded;
+}
+
+@keyframes elementRemoved {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.removed {
+    animation: 300ms ease-out 0s 1 elementRemoved;
 }
