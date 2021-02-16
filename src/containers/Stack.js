@@ -1,6 +1,5 @@
 import Button from '../components/Button.js';
 import StackList from "../components/StackList.js";
-import { ANIMATION } from "../util.js";
 
 export default function Stack() {
   let stackedData = [];
@@ -26,14 +25,14 @@ export default function Stack() {
     stackedData = stackedData.concat(stackedData.length + 1);
     this.stackList.render({
       data: stackedData,
-      animation: ANIMATION["NEW_ELEMENT_ADDED"],
+      operation: "push",
     })
   };
 
   this.popData = () => {
     this.stackList.render({
       data: stackedData,
-      animation: ANIMATION["ELEMENT_REMOVED"],
+      operation: "pop",
     })
     stackedData = stackedData.slice(0, -1);
   };

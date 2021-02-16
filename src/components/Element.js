@@ -1,41 +1,37 @@
-export default function Element({$target, innerText, animation }) {
-  this.$target = $target;
-
-  this.render = () => {
+export default class Element {
+  constructor({$target, innerText}) {
+    this.$target = $target;
     const $newElement = document.createElement("LI");
+    this.$newElement = $newElement;
     this.$target.appendChild($newElement);
-    $newElement.innerText = innerText;
+    this.$newElement.innerText = innerText;
+    this.$newElement.className = `list-item`;
+  }
 
-    if (animation) {
-      if (animation !== 'move-left') {
-        $newElement.className = `list-item ${animation}`;
-      } else {
-        $newElement.className = `list-item`;
-      }
+  addAnimation() {
+    this.$newElement.className = `list-item add`
+  }
 
-      // remove element after animation
-      setTimeout(() => {
-        if (animation === "pop") {
-          $newElement.remove();
-        }
-      }, 250);
+  popAnimation() {
+    this.$newElement.className = `list-item pop`
+  }
 
-      setTimeout(() => {
-        if (animation === "move-left") {
-          $newElement.className = "list-item move-left";
-        }
-      }, 300);
+  dequeueAnimation() {
+    this.$newElement.className = `list-item dequeue`
 
-      setTimeout(() => {
-        if (animation === "dequeue") {
-          $newElement.remove();
-        }
-      }, 600);
+  }
 
-    } else {
-      $newElement.className = `list-item`;
-    }
-  };
+  moveLeftAfterDelay(milliseconds) {
+    setTimeout(() => {
+      this.$newElement.className = "list-item move-left";
+    }, milliseconds);
+  }
 
-  this.render();
+  removeAfterDelay(milliseconds) {
+    setTimeout(() => {
+      this.$newElement.remove();
+    }, milliseconds);
+  }
 }
+
+

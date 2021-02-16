@@ -6,21 +6,20 @@ export default function StackList({ $target }) {
   this.$target.appendChild(this.$stackList);
   this.$stackList.className = "list";
 
-  // remove all old children, and draw new children
-  this.render = ({ data, animation }) => {
+  this.render = ({ data, operation }) => {
     this.$stackList.innerHTML = '';
+
     data.forEach((item) => {
-      if (item === data.length) {
-        new Element({
-          $target: this.$stackList,
-          innerText: item,
-          animation
-        });
-      } else {
-        new Element({
-          $target: this.$stackList,
-          innerText: item,
-        });
+      const newElement = new Element({
+        $target: this.$stackList,
+        innerText: item,
+      });
+
+      if (item === data.length && operation === "push") {
+        newElement.addAnimation();
+      } else if (item === data.length && operation === "pop") {
+        newElement.popAnimation();
+        newElement.removeAfterDelay(250);
       }
     })
   };
