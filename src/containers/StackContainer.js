@@ -1,10 +1,9 @@
 import Button from '../components/Button.js';
 import StackList from "../components/StackList.js";
+import Stack from '../dataStructure/Stack.js';
 
-export default function Stack() {
-  let stackedData = [];
-
-  this.$stack = document.querySelector(".stack");
+export default function StackContainer() {
+  this.$stackContainer = document.querySelector(".stack");
   this.$buttonWrapper = document.querySelector('.stack.button-wrapper');
 
   this.initiate = () => {
@@ -18,23 +17,26 @@ export default function Stack() {
       innerText: "POP",
       onClick: this.popData
     });
-    this.stackList = new StackList({ $target: this.$stack });
+    this.stack = new Stack();
+    this.stackList = new StackList({$target: this.$stackContainer});
   }
 
   this.pushData = () => {
-    stackedData = stackedData.concat(stackedData.length + 1);
+    const currentData = this.stack.getData();
+    this.stack.push(currentData.length + 1);
     this.stackList.render({
-      data: stackedData,
+      data: currentData,
       operation: "push",
     })
   };
 
   this.popData = () => {
+    const currentData = this.stack.getData();
     this.stackList.render({
-      data: stackedData,
+      data: currentData,
       operation: "pop",
     })
-    stackedData = stackedData.slice(0, -1);
+    this.stack.pop();
   };
 
   this.initiate();

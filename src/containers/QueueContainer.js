@@ -1,10 +1,9 @@
 import Button from '../components/Button.js';
 import QueueList from "../components/QueueList.js";
+import Queue from "../dataStructure/Queue.js";
 
-export default function Queue() {
-  let queuedData = [];
-
-  this.$stack = document.querySelector(".queue");
+export default function QueueContainer() {
+  this.$queueContainer = document.querySelector(".queue");
   this.$buttonWrapper = document.querySelector('.queue.button-wrapper');
 
   this.initiate = () => {
@@ -18,27 +17,30 @@ export default function Queue() {
       innerText: "DEQUEUE",
       onClick: this.dequeueData
     });
-    this.queueList = new QueueList({ $target: this.$stack });
+    this.queue = new Queue();
+    this.queueList = new QueueList({ $target: this.$queueContainer });
   }
 
   this.enqueueData = () => {
-    queuedData = queuedData.concat(
-      queuedData.length === 0
+    const currentData = this.queue.getData();
+    this.queue.enqueue(
+      currentData.length === 0
         ? 1
-        : queuedData[queuedData.length - 1] + 1
+        : currentData[currentData.length - 1] + 1
     );
     this.queueList.render({
-      data: queuedData,
+      data: currentData,
       operation: "enqueue",
     })
   };
 
   this.dequeueData = () => {
+    const currentData = this.queue.getData();
     this.queueList.render({
-      data: queuedData,
+      data: currentData,
       operation: "dequeue",
     })
-    queuedData = queuedData.slice(1);
+    this.queue.dequeue();
   };
 
   this.initiate();

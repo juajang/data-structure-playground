@@ -1,26 +1,27 @@
-import Button from '../components/Button.js';
+import Button from "../components/Button.js";
 
-export default function LinkedList() {
-  let data = [];
+export default function LinkedListContainer() {
+  let data = {
 
-  this.$stack = document.querySelector(".linked-list");
+  };
+
+  this.$linkedList = document.querySelector(".linked-list");
   this.$buttonWrapper = document.querySelector('.linked-list.button-wrapper');
 
   this.initiate = () => {
     new Button({
       $target: this.$buttonWrapper,
       innerText: "ADD",
-      onClick: this.addData
-    });
+      onClick: this.addData,
+    })
     new Button({
       $target: this.$buttonWrapper,
       innerText: "REMOVE",
-      onClick: this.removeData
-    });
-    //this.stackList = new StackList({ $target: this.$stack });
+      onClick: this.removeData,
+    })
   }
 
-  this.addData = () => {
+  this.addData = (index) => {
 
   };
 

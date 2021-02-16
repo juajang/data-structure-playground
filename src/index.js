@@ -1,7 +1,7 @@
-import Stack from './containers/Stack.js';
-import Queue from "./containers/Queue.js";
-import LinkedList from "./containers/LinkedList.js";
+import StackContainer from './containers/StackContainer.js';
+import QueueContainer from "./containers/QueueContainer.js";
+import LinkedListContainer from "./containers/LinkedListContainer.js";
 
-new Stack();
-new Queue();
-new LinkedList();
+new StackContainer();
+new QueueContainer();
+new LinkedListContainer();
