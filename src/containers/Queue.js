@@ -1,5 +1,4 @@
 import Button from '../components/Button.js';
-import { ANIMATION } from "../util.js";
 import QueueList from "../components/QueueList.js";
 
 export default function Queue() {
@@ -32,7 +31,6 @@ export default function Queue() {
       data: queuedData,
       operation: "enqueue",
     })
-    console.log(queuedData);
   };
 
   this.dequeueData = () => {
@@ -41,7 +39,6 @@ export default function Queue() {
       operation: "dequeue",
     })
     queuedData = queuedData.slice(1);
-    console.log(queuedData);
   };
 
   this.initiate();
