@@ -23,17 +23,20 @@ export default function StackContainer() {
 
   this.pushData = () => {
     const currentData = this.stack.getData();
-    this.stack.push(currentData.length + 1);
+    this.stack.push(
+      currentData.length === 0
+        ? 1
+        : currentData[currentData.length - 1] + 1
+    );
     this.stackList.render({
-      data: currentData,
+      data: this.stack.getData(),
       operation: "push",
     })
   };
 
   this.popData = () => {
-    const currentData = this.stack.getData();
     this.stackList.render({
-      data: currentData,
+      data: this.stack.getData(),
       operation: "pop",
     })
     this.stack.pop();

@@ -29,15 +29,14 @@ export default function QueueContainer() {
         : currentData[currentData.length - 1] + 1
     );
     this.queueList.render({
-      data: currentData,
+      data: this.queue.getData(),
       operation: "enqueue",
     })
   };
 
   this.dequeueData = () => {
-    const currentData = this.queue.getData();
     this.queueList.render({
-      data: currentData,
+      data: this.queue.getData(),
       operation: "dequeue",
     })
     this.queue.dequeue();
