@@ -5,8 +5,8 @@ import QueueList from "../components/QueueList.js";
 export default function Queue() {
   let queuedData = [];
 
-  this.$stack = document.querySelector("#queue");
-  this.$buttonWrapper = document.querySelector('#queue-button-wrapper');
+  this.$stack = document.querySelector(".queue");
+  this.$buttonWrapper = document.querySelector('.queue.button-wrapper');
 
   this.initiate = () => {
     new Button({

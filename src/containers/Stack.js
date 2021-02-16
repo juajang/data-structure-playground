@@ -5,8 +5,8 @@ import { ANIMATION } from "../util.js";
 export default function Stack() {
   let stackedData = [];
 
-  this.$stack = document.querySelector("#stack");
-  this.$buttonWrapper = document.querySelector('#stack-button-wrapper');
+  this.$stack = document.querySelector(".stack");
+  this.$buttonWrapper = document.querySelector('.stack.button-wrapper');
 
   this.initiate = () => {
     new Button({
