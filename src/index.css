@@ -47,6 +47,7 @@ h2 {
 }
 
 .list-item {
+    position: relative;
     background-color: #fcd5ce;
     color: #b5838d;
     width: 2rem;
@@ -65,8 +66,9 @@ h2 {
     }
 }
 
-.added {
+.add {
     animation: 300ms ease-out 0s 1 newElementAdded;
+    -webkit-animation: 300ms ease-out 0s 1 newElementAdded;
 }
 
 @keyframes elementRemoved {
@@ -78,6 +80,38 @@ h2 {
     }
 }
 
-.removed {
+.pop {
     animation: 300ms ease-out 0s 1 elementRemoved;
+    -webkit-animation: 300ms ease-out 0s 1 elementRemoved;
+}
+
+@keyframes elementDequeued {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.dequeue {
+    animation: 600ms ease-out 0s 1 elementDequeued;
+    -webkit-animation: 600ms ease-out 0s 1 elementDequeued;
+}
+
+@keyframes elementMovedLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-2.5rem);
+    }
+}
+
+.move-left {
+    animation: 300ms ease-out 0s 1 elementMovedLeft;
+    -webkit-animation: 300ms ease-out 0s 1 elementMovedLeft;
 }

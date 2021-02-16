@@ -20,7 +20,6 @@ export default function StackList({ $target }) {
         new Element({
           $target: this.$stackList,
           innerText: item,
-          animation: '',
         });
       }
     })

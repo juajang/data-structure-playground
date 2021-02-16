@@ -30,17 +30,18 @@ export default function Queue() {
     );
     this.queueList.render({
       data: queuedData,
-      animation: ANIMATION["NEW_ELEMENT_ADDED"],
+      operation: "enqueue",
     })
+    console.log(queuedData);
   };
 
   this.dequeueData = () => {
     this.queueList.render({
-      data: this.queuedData,
-      animation: ANIMATION["ELEMENT_REMOVED"],
+      data: queuedData,
+      operation: "dequeue",
     })
-    this.queuedData = this.queuedData.slice(1);
-    console.log(this.queuedData);
+    queuedData = queuedData.slice(1);
+    console.log(queuedData);
   };
 
   this.initiate();
