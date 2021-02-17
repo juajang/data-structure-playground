@@ -34,7 +34,7 @@ export default function LinkedListContainer() {
     for (let { data } of this.linkedList) {
       if (data >= newItem) newItem = data + 1;
     }
-    console.log(newItem);
+
     if (length === 0) {
       this.linkedList.addFirst(newItem);
     } else if (targetNode === lastNode) {
@@ -43,27 +43,33 @@ export default function LinkedListContainer() {
       this.linkedList.addAfter(this.currentNode, newItem);
     }
 
-    this.render();
+    this.render({
+      newElement: newItem
+    });
   };
 
   this.removeData = () => {
     if (!this.currentNode) {
       throw new Error("삭제할 element를 선택해주세요!")
     }
+    this.render({
+      removedElement: this.currentNode
+    });
     this.linkedList.remove(this.currentNode);
-    this.render();
   };
 
   this.setCurrentNode = (data) => {
     this.currentNode = data;
-    this.render();
+    this.render({});
   };
 
-  this.render = () => {
+  this.render = ({ newElement, removedElement }) => {
     this.LinkedListList.render({
       linkedList: this.linkedList,
       setCurrentNode: this.setCurrentNode,
       currentNode: this.currentNode,
+      newElement,
+      removedElement,
     })
   }
 
