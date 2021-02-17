@@ -31,13 +31,15 @@ export default function LinkedListContainer() {
     const targetNode = this.currentNode ?? lastNode;
 
     let newItem = 1;
+    let isCurrentNodeRemoved = true;
     for (let { data } of this.linkedList) {
       if (data >= newItem) newItem = data + 1;
+      if (data === this.currentNode) isCurrentNodeRemoved = false;
     }
 
     if (length === 0) {
       this.linkedList.addFirst(newItem);
-    } else if (targetNode === lastNode) {
+    } else if (targetNode === lastNode || isCurrentNodeRemoved) {
       this.linkedList.addLast(newItem);
     } else {
       this.linkedList.addAfter(this.currentNode, newItem);
