@@ -25,21 +25,27 @@ export default function LinkedListContainer() {
     this.linkedList = new LinkedList();
   }
 
+  this.isRemovedElement = (element) => {
+    let isRemovedElement = true;
+    for (let { data } of this.linkedList) {
+      if (data === element) isRemovedElement = false;
+    }
+    return isRemovedElement;
+  }
+
   this.addData = () => {
     const length = [...this.linkedList].length;
     const lastNode = this.currentNode === [...this.linkedList][length - 1];
     const targetNode = this.currentNode ?? lastNode;
 
     let newItem = 1;
-    let isCurrentNodeRemoved = true;
     for (let { data } of this.linkedList) {
       if (data >= newItem) newItem = data + 1;
-      if (data === this.currentNode) isCurrentNodeRemoved = false;
     }
 
     if (length === 0) {
       this.linkedList.addFirst(newItem);
-    } else if (targetNode === lastNode || isCurrentNodeRemoved) {
+    } else if (targetNode === lastNode || this.isRemovedElement(this.currentNode)) {
       this.linkedList.addLast(newItem);
     } else {
       this.linkedList.addAfter(this.currentNode, newItem);
@@ -51,7 +57,7 @@ export default function LinkedListContainer() {
   };
 
   this.removeData = () => {
-    if (!this.currentNode) {
+    if (this.isRemovedElement(this.currentNode)) {
       throw new Error("삭제할 element를 선택해주세요!")
     }
     this.render({
