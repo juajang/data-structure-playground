@@ -1,4 +1,4 @@
-import Element from "./Element.js";
+import { Element } from "./Element.js";
 
 export default function StackList({ $target }) {
   this.$target = $target;

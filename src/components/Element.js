@@ -1,4 +1,4 @@
-export default class Element {
+export class Element {
   constructor({$target, innerText}) {
     this.$target = $target;
     const $newElement = document.createElement("LI");
@@ -34,4 +34,19 @@ export default class Element {
   }
 }
 
+export class LinkedListElement extends Element {
+  constructor(props) {
+    super(props);
 
+    if (props.isClicked === true) {
+      this.$newElement.className = "list-item linked-list clicked"
+    } else {
+      this.$newElement.className = "list-item linked-list"
+    }
+
+    this.$newElement.addEventListener("click", () => {
+      props.setCurrentIndex(props.index);
+    })
+  }
+
+}

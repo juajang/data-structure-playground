@@ -1,5 +1,4 @@
-import Element from "./Element.js";
-import {ANIMATION} from "../util.js";
+import { Element } from "./Element.js";
 
 export default function QueueList({$target, operation}) {
   this.$target = $target;
