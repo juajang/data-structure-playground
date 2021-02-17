@@ -45,7 +45,7 @@ export class LinkedListElement extends Element {
     }
 
     this.$newElement.addEventListener("click", () => {
-      props.setCurrentIndex(props.index);
+      props.setCurrentNode(props.innerText);
     })
   }
 

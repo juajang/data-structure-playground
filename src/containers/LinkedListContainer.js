@@ -3,7 +3,7 @@ import LinkedList from "../dataStructure/LinkedList.js";
 import LinkedListList from "../components/LinkedListList.js";
 
 export default function LinkedListContainer() {
-  this.index = -1;
+  this.currentNode = null;
 
   this.$linkedList = document.querySelector(".linked-list");
   this.$buttonWrapper = document.querySelector('.linked-list.button-wrapper');
@@ -27,41 +27,43 @@ export default function LinkedListContainer() {
 
   this.addData = () => {
     const length = [...this.linkedList].length;
-    const index = length - 1;
+    const lastNode = this.currentNode === [...this.linkedList][length - 1];
+    const targetNode = this.currentNode ?? lastNode;
 
     let newItem = 1;
     for (let { data } of this.linkedList) {
       if (data >= newItem) newItem = data + 1;
     }
-
+    console.log(newItem);
     if (length === 0) {
       this.linkedList.addFirst(newItem);
-    } else if (index === length - 1) {
+    } else if (targetNode === lastNode) {
       this.linkedList.addLast(newItem);
     } else {
-      console.log("add between");
-      this.linkedList.addAfter(index, newItem);
+      this.linkedList.addAfter(this.currentNode, newItem);
     }
-    console.log("after", [...this.linkedList]);
 
     this.render();
   };
 
   this.removeData = () => {
-
+    if (!this.currentNode) {
+      throw new Error("삭제할 element를 선택해주세요!")
+    }
+    this.linkedList.remove(this.currentNode);
+    this.render();
   };
 
-  this.setCurrentIndex = (index) => {
-    this.index = index;
-
+  this.setCurrentNode = (data) => {
+    this.currentNode = data;
     this.render();
   };
 
   this.render = () => {
     this.LinkedListList.render({
       linkedList: this.linkedList,
-      setCurrentIndex: this.setCurrentIndex,
-      currentIndex: this.index,
+      setCurrentNode: this.setCurrentNode,
+      currentNode: this.currentNode,
     })
   }
 

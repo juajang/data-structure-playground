@@ -6,20 +6,16 @@ export default function LinkedListList({ $target }) {
   this.$target.appendChild(this.$linkedListList);
   this.$linkedListList.className = "list";
 
-  this.render = ({ linkedList, setCurrentIndex, currentIndex }) => {
+  this.render = ({ linkedList, setCurrentNode, currentNode }) => {
     this.$linkedListList.innerHTML = '';
 
-    let index = 0;
     for (let { data } of linkedList) {
       const newElement = new LinkedListElement({
         $target: this.$linkedListList,
         innerText: data,
-        index,
-        setCurrentIndex,
-        isClicked: index === currentIndex,
+        setCurrentNode,
+        isClicked: data === currentNode,
       });
-
-      index += 1;
     }
   }
 }

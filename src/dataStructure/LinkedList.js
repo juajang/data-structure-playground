@@ -38,28 +38,26 @@ export default class LinkedList {
     [...this][length - 1].next = newNode;
   }
 
-  addAfter(index, data) {
+  addAfter(targetData, newData) {
     const newNode = new Node({
-      data,
+      data: newData,
     })
-    let currentIndex = 0;
     for (let currentNode of this) {
-      if (currentIndex === index) {
+      if (currentNode.data === targetData) {
         newNode.next = currentNode.next;
         currentNode.next = newNode;
       }
-      currentIndex++;
     }
   }
 
-  remove(index) {
-    if (this.head.data === index) {
+  remove(data) {
+    if (data === this.head.data) {
       this.head = this.head.next;
       return;
     }
     let previousNode = this.head;
-    for (let [currentNode, currentIndex] of [...this]) {
-      if (currentIndex === index) {
+    for (let currentNode of this) {
+      if (currentNode.data === data) {
         previousNode.next = currentNode.next;
         return;
       }
